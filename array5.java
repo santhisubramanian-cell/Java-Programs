@@ -1,38 +1,67 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array5 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
+		int row = scan.nextInt();
+		int col = scan.nextInt();
 		
-		int n = scan.nextInt();
-		double[] a = new double[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
-		}
-		double max = a[0];
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
+		int[][] a =  new int[row][col];
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		double min=max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		
+		System.out.println("Temperature Grid:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
 			}
+			System.out.println();
 		}
-		double diff =Math.abs(min-max);
-		double save = (diff/max)*100.0;
-		System.out.println("Number of Sellers:"+n);
-		System.out.println();
-		System.out.printf("Lowest Price:$ %.2f",min);
-		System.out.println();
-		System.out.printf("Highest Price::$ %.2f",max);
-		System.out.println();
-		System.out.printf("Price Difference:$ %.2f",diff);
-		System.out.println();
-		System.out.printf("Savings: %.2f",save);
+		int max = a[0][0];
+		int index1 = -1;
+		int index2=-1;
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				if(a[i][j]>max) {
+					max=a[i][j];
+					index1=i;
+					index2=j;
+					
+				}
+			}
+			
+		}
+		int index3=-1;
+		int index4=-1;
+		int min=max;
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				if(a[i][j]<min) {
+					min=a[i][j];
+					index3=i;
+					index4=j;
+				}
+			}
+			
+		}
+		int sum=0;
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				sum+=a[i][j];
+			}
+			
+		}
+		int n = row*col;
+		double avg = (double)sum/(double)n;
+		
+		System.out.println("Maximum Temperature:"+max+"°C at position ("+index1+","+index2+")");
+		System.out.println("Minimum Temperature:"+min+"°C at position ("+index3+","+index4+")");
+		System.out.printf("Average Temperature:%.2f°C ",avg);
 		
 		
 		
@@ -48,8 +77,6 @@ public class array5 {
 		
 		
 		
-		
-
 	}
 
 }
