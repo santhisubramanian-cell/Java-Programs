@@ -1,54 +1,52 @@
-package one_d_array;
-import java.util.Scanner;
+package two_d_array;
+import java.util.*;
 public class array3 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		
-		int n = scan.nextInt();
-		int[] a = new int[n];
-		
-		int max=a[0];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
-		}
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
+		int row = scan.nextInt();
+		int col = scan.nextInt();
+		int[][] a1 = new int[row][col];
+		int[][] a2 = new int[row][col];
+		int[][] a3 = new int[row][col];
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a1[i][j]=scan.nextInt();
 			}
 		}
-		int min =max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		System.out.println("Matrix 1:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a1[i][j]+" ");
+			}
+			System.out.println();
+		}
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a2[i][j]=scan.nextInt();
 			}
 		}
-		int count=0;
-		for(int i=0;i<n;i++) {
-			if(a[i]<40) {
-				count++;
+		System.out.println("Matrix 2:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a2[i][j]+" ");
+			}
+			System.out.println();
+		}
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a3[i][j]=a1[i][j]+a2[i][j];
 			}
 		}
-		int total = n-count;
-		double res = ((double)total/(double)n)*100.0;
-		System.out.println("Total Students:"+n);
-		System.out.println("Highest Score:"+max);
-		System.out.println("Lowest Score:"+min);
-		System.out.println("Failed Students: "+count);
-		System.out.printf("Pass Percentage:%.2f%% ",res);
+		System.out.println("sum matrix:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a3[i][j]+" ");
+			}
+			System.out.println();
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 }
