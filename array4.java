@@ -1,46 +1,48 @@
-package one_d_array;
-import java.util.Scanner;
-
+package two_d_array;
+import java.util.*;
 public class array4 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
-		double[] a = new double[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
-		}
-		double max = a[0];
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
+		int row = scan.nextInt();
+		int col = scan.nextInt();
+		
+		int[][] a = new int[row][col];
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		double min=max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		System.out.println("Sales Data:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
 			}
+			System.out.println();
 		}
-		double range = min-max;
-		double sum=0;
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
+		System.out.println("Product-wise Total Slaes:");
+		int max=a[0][0];
+		for(int i=0;i<row;i++) {
+			int sum=0;
+			
+			for(int j=0;j<col;j++) {
+				sum+=a[i][j];
+			}
+		
+			System.out.printf("Product %d:%d\n",(i+1),sum);
+			if(sum>max) {
+				max=sum;
+			}
+			
+			
 		}
-		double avg = sum/(double)n;
-		System.out.println("Number of Readings:"+n);
-		System.out.println();		
-		System.out.printf("Maximum Temperature:%.2fC",max);
-		System.out.println();
-		System.out.printf("Minimum Temperature:%.2fC",min);
-		System.out.println();
-		System.out.printf("Temperature Range: %.2fC",Math.abs(range));
-		System.out.println();
-		System.out.printf("Average Temperature: %.2fC",avg);
+		
+		System.out.println("Best-Selling Product: "+"with"+max+"units");
 		
 		
-	}
 
+	}
 
 }
