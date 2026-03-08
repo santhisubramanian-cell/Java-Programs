@@ -1,44 +1,55 @@
-package one_d_array;
-import java.util.Scanner;
+package two_d_array;
+import java.util.*;
 public class array8 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
+		int row = scan.nextInt();
+		int col = scan.nextInt();
 		int n = scan.nextInt();
 		
-		int[] a = new int[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
-		}
-		int longest = a[0];
-		int sum =0;
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
-			if(a[i]>longest) {
-				longest=a[i];
+		int[][] a = new int[row][col];
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		double avg = (double)sum/(double)n;
-		int count=0;
-		for(int i=0;i<n;i++) {
-			if(a[i]>60) {
-				count++;
+		System.out.println("Original Image:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("Adjusted Image:");
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]+=n;
 			}
 		}
-		int sum2=0;
-		for(int i=0;i<n;i++) {
-			if(a[i]<60) {
-				sum2+=a[i];
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
 			}
+			System.out.println();
 		}
-		double total = ((double)sum2/(double)n)*100.0;
-		System.out.println("Total Patients:"+n);
-		System.out.println("Longest Wait Time:"+longest);
-		System.out.printf("Average Wait Time:%.2f",avg);
-		System.out.println();
-		System.out.println("Patients Waiting >60 min:"+count);
-		System.out.printf("Service Level:%.2f%%",total);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
