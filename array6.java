@@ -1,37 +1,47 @@
-package one_d_array;
-import java.util.ArrayList;
+package two_d_array;
 import java.util.Scanner;
 public class array6 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
+		int row = scan.nextInt();
+		int col = scan.nextInt();
 		
-		double[] a = new double[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
-		}
-		double sum=0;
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
-		}
-		String res="";
-		double avg = sum/(double)n;
-		int count=0;
-		double threshold = avg*2;
-		ArrayList<Integer> index = new ArrayList<>();
-		for(int i=0;i<n;i++) {
-			if(a[i]>threshold) {
-				count++;
-				index.add(i);
+		int[][] a = new int[row][col];
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		System.out.println("Total Transactions:"+n);
-		System.out.printf("Average Transaction:$%.2f",avg);
-		System.out.println();
-		System.out.println("Suspicious Transactions:"+count);
-		System.out.println("Fraud Alert Indices:"+index);
+		System.out.println("Traffic Data:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("Total Traffic Per Lane:");
+		for(int i=0;i<row;i++) {
+			int sum=0;
+			for(int j=0;j<col;j++) {
+				sum+=a[i][j];
+			}
+			System.out.println("Lane "+(i+1)+":"+sum);
+		}
+		int max=a[0][0];
+		int sum1=0;
+		for(int j=0;j<col;j++) {
+			for(int i=0;i<row;i++) {
+				sum1+=a[j][i];
+				if(sum1>max) {
+					max=sum1;
+				}
+				
+			}
+			System.out.println("Busiest Hour: Hour"+(j+1)+"with"+max+"vehicles");
+		}
 
 	}
 
