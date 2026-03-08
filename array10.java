@@ -1,47 +1,45 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array10 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n= scan.nextInt();
+		int row = scan.nextInt();
+		int col = scan.nextInt();
 		
-		int[] a =new int[n];
-		int sum=0;
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
-			sum+=a[i];
-			
+		int[][] a = new int[row][col];
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();			}
 		}
-		int max = a[0];
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
+		System.out.println("Sales Matrix:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
 			}
+			System.out.println();
 		}
-		int min=max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		System.out.println("Representative Totals:");
+		for(int i=0;i<row;i++) {
+			int sum=0;
+			for(int j=0;j<col;j++) {
+				sum+=a[i][j];
 				
 			}
+			System.out.println("Rep "+(i+1)+": "+sum);
+			
 		}
-		double avg = (double)sum/(double)n;
-		int slow =0;
-		for(int i=0;i<n;i++) {
-			if(a[i]>200) {
-				slow++;
+		System.out.println("Territory Totals:");
+		for(int i=0;i<col;i++) {
+			int sum=0;
+			for(int j=0;j<row;j++) {
+				sum+=a[j][i];
 			}
+			System.out.println("Territory "+(i+1)+": "+sum);
+			
 		}
-		double score = (((double)n-(double)slow)/(double)n)*100.0;
-		System.out.println("Total Servers:"+n);
-		System.out.println("Fastest Response:"+min);
-		System.out.println("Slowest Response:"+max);
-		System.out.printf("Average Response:%.2f",avg);
-		System.out.println();
-		System.out.println("Slow Servers (>200ms):"+slow);
-		System.out.printf("Performance Score:%.2f%%",score);
 		
 		
 		
@@ -52,7 +50,9 @@ public class array10 {
 		
 		
 		
-
+		
+		
+		
 	}
 
 }
