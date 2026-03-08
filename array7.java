@@ -1,36 +1,50 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array7 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
-		int[] a = new int[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
+		int row = scan.nextInt();
+		int col = scan.nextInt();
+		
+		int[][] a = new int[row][col];
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
+			}
 		}
-		int threshold = scan.nextInt();
-		int count=0;
-		System.out.println("Production Lines:"+n);
-		System.out.println("Acceptable Threshold:"+threshold);
-		System.out.println("Lines Exceeding Threshold:[");
-		for(int i=0;i<n;i++){
-			if(a[i]>threshold) {
-				count++;
-				System.out.print(i+1);
-				if(count ==0 || i!=n-1) {
-					System.out.print("");
+		System.out.println("Inventory Grid:");
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
+		int sum=0;
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				sum+=a[i][j];
+			}
+		}
+		int n = row*col;
+		double avg = (double)sum/(double)n;
+		int max = a[0][0];
+		int index=-1;
+		int index1=-1;
+		
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				if(a[i][j]>max) {
+					max=a[i][j];
+					index=i;
+					index=j;
 				}
 			}
-			
 		}
-		System.out.println("]");
-		System.out.println("Lines Exceeding Threshold:"+count);
-		double res = ((double)(n-count)/n)*100;
-		System.out.println();
-		System.out.printf("Compliance Rate:%.2f%%",res);
-				
+		System.out.println("Total Inventory:"+sum);
+		System.out.println("Max Stock Zone: Row "+index+","+"col"+index1+"("+max+"units)");
+		System.out.printf("Average Stock per Zone:%.2f",avg);
 
 	}
 
