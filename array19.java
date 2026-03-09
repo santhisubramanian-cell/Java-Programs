@@ -1,4 +1,4 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array19 {
 
@@ -6,44 +6,37 @@ public class array19 {
 		Scanner scan = new Scanner(System.in);
 		
 		int n = scan.nextInt();
-		int[] a = new int[n];
-		int sum =0;
+		int[][] a = new int[n][n];
 		
 		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
-			sum+=a[i];
-		}
-		double avg = (double)sum/(double)n;
-		
-		int max = a[0];
-		int index=-1;
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
-				index=i+1;
+			for(int j=0;j<n;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		int count =0;
+		System.out.println("Original Image:");
 		for(int i=0;i<n;i++) {
-			if(a[i]<avg) {
-				count++;
+			for(int j=0;j<n;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
+		
+		int m = n/2;
+		int[][] a2 = new int[m][m];;
+		
+		for(int i=0;i<m;i++) {
+			for(int j=0;j<m;j++) {
+				a2[i][j]=(a[2*i][2*j]+a[2*i+1][2*j]+a[2*i][2*j+1]+a[2*i+1][2*j+1])/4;
 			}
 		}
-		double goal = ((double)n-(double)count)/(double)n*100.0;
 		
-		System.out.println("Days Tracked: "+n);
-		System.out.println("Total Calories Burned: "+sum);
-		System.out.printf("Average Daily Burn:%.2f ",avg);
-		System.out.print("Peak Burn Day:Day "+index);
-		System.out.println("("+max+")");
-		System.out.println("Days Below Target: "+count);
-		System.out.printf("Goal Achievement: %.2f%% ",goal);
-		
-		
-		
-		
-		
-		
+		System.out.println("Compressed Image:");
+		for(int i=0;i<m;i++) {
+			for(int j=0;j<m;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
 		
 		
 		
