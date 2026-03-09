@@ -1,57 +1,45 @@
-package one_d_array;
-
-import java.util.*;
-
+package two_d_array;
+import java.util.Scanner;
 public class array22 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        double[] engagement = new double[n];
 
-        for (int i = 0; i < n; i++) {
-            engagement[i] = sc.nextDouble();
-        }
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int r = scan.nextInt();
+		int c = scan.nextInt();
+		int[][] a = new int[r][c];
+		
+		for(int i=0;i<r;i++) {
+			for(int j=0;j<c;j++) {
+				a[i][j]=scan.nextInt();
+			}
+		}
+		
+		int top=0,bottom=r-1,left=0,right=c-1;
+		
+        while(top<=bottom && left<=right) {
+			for(int i=left ;i<=right;i++) {
+				System.out.print(a[top][i]+" ");
+				
+			}
+			top++;
+			for(int i=top;i<=bottom;i++) {
+				System.out.print(a[i][right]+" ");
+			}
+			right--;
+			if(top<=bottom) {
+				for(int i=right;i>=left;i--) {
+					System.out.print(a[bottom][i]+" ");
+				}
+				bottom--;
+			}
+			if(left<=right) {
+				for(int i=bottom;i>=top;i--) {
+					System.out.print(a[i][left]+" ");
+				}
+				left++;
+			}
+		}
 
-        double total = 0;
-        double max = engagement[0];
-        double min = engagement[0];
-        int maxIndex = 0;
-        int minIndex = 0;
-        for (int i = 0; i < n; i++) {
-            total += engagement[i];
+	}
 
-            if (engagement[i] > max) {
-                max = engagement[i];
-                maxIndex = i;
-            }
-
-            if (engagement[i] < min) {
-                min = engagement[i];
-                minIndex = i;
-            }
-        }
-
-        double average = total / n;
-        double viralThreshold = average * 2;
-
-        int viralCount = 0;
-        ArrayList<Integer> topPosts = new ArrayList<>();
-        for (int i = 0; i < n; i++) {
-            if (engagement[i] > viralThreshold) {
-                viralCount++;
-                topPosts.add(i + 1); 
-            }
-        }
-
-       
-        System.out.println("Total Posts: " + n);
-        System.out.printf("Average Engagement: %.2f%%\n", average);
-        System.out.printf("Peak Engagement: %.2f%% (Post %d)\n", max, maxIndex + 1);
-        System.out.printf("Lowest Engagement: %.2f%% (Post %d)\n", min, minIndex + 1);
-        System.out.println("Viral Posts (>200% avg): " + viralCount);
-        System.out.printf("Viral Threshold: %.2f%%\n", viralThreshold);
-        System.out.println("Top Performers: " + topPosts);
-
-        sc.close();
-    }
 }
