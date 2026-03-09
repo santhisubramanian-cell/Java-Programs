@@ -1,55 +1,61 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array21 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
+		int r1 = scan.nextInt();
+		int c1 = scan.nextInt();
+		int r2 = scan.nextInt();
+		int c2 = scan.nextInt();
 		
-		double[] a = new double[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
+		int[][] a1 = new int[r1][c1];
+		int[][] a2 = new int[r2][c2];
+
+		int[][] a3 = new int[r1][c2];
+		
+		for(int i=0;i<r1;i++) {
+			for(int j=0;j<c1;j++) {
+				a1[i][j]=scan.nextInt();
+			}
+		}
+		
+		for(int i=0;i<r2;i++) {
+			for(int j=0;j<c2;j++) {
+				a2[i][j]=scan.nextInt();
+			}
+		}
+		System.out.println("Matrix A:");
+		for(int i=0;i<r1;i++) {
+			for(int j=0;j<c1;j++) {
+				System.out.print(a1[i][j]+" ");
+			}
+			System.out.println();
 			
 		}
-		double sum=0;
-		double max=a[0];
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
-			if(a[i]>max) {
-				max=a[i];
+		System.out.println("Matrix B:");
+		for(int i=0;i<r2;i++) {
+			for(int j=0;j<c2;j++) {
+				System.out.print(a2[i][j]+" ");
+			}
+			System.out.println();
+			
+		}
+		System.out.println("result matrix:");
+		for(int i=0;i<r1;i++) {
+			for(int j=0;j<c2;j++) {
+				for(int k=0;k<c1;k++) {
+					a3[i][j]+=a1[i][k]*a2[k][j];
+				}
 			}
 		}
-		double avg = sum/(double)n;
-		double min=max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		for(int i=0;i<r1;i++) {
+			for(int j=0;j<c2;j++) {
+				System.out.print(a3[i][j]+" ");
 			}
+			System.out.println();
 		}
-		double threshold = (80.0/100.0)*avg;
-		int count=0;
-		String index ="";
-		for(int i=0;i<n;i++) {
-			if(a[i]<threshold) {
-				count++;
-				index+=(i+1)+",";
-			}
-		}
-		if(count==0) {
-			index="";
-		}
-		System.out.println("Fleet Size:"+n);
-		System.out.printf("Average Fuel Efficiency:%.2f",avg);
-		System.out.println();
-		System.out.printf("Most Efficient:",max);
-		System.out.println();
-		System.out.printf("Least Efficient:",min);
-		System.out.println();
-		System.out.println("Underperforming Vehicles:"+count);
-		System.out.printf("Efficiency Threshold:",threshold);
-		System.out.println();
-		System.out.println("Maintenance Priority:["+index.trim()+"]");
 		
 		
 		
@@ -82,7 +88,37 @@ public class array21 {
 		
 		
 		
-
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 
 }
