@@ -1,4 +1,4 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array14 {
 
@@ -7,35 +7,51 @@ public class array14 {
 		
 		int n = scan.nextInt();
 		
-		double[] a = new double[n];
+		int[][] a = new int[n][n];
+		
 		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
-		}
-		double total =0;
-		double max = a[0];
-		for(int i=0;i<n;i++) {
-			total+=a[i];
-			if(a[i]>max) {
-				max=a[i];
+			for(int j=0;j<n;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		double avg = total/(double)n;
-		double threshold = (80.0/100.0)*avg;
-		int count=0;
+		System.out.println("Original Matrix:");
 		for(int i=0;i<n;i++) {
-			if(a[i]<threshold) {
-				count++;
+			for(int j=0;j<n;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				int temp = a[i][j];
+				a[i][j]=a[j][i];
+				a[j][i]=temp;
 			}
 		}
-		System.out.println("Total Plots:"+n);
-		System.out.printf("Total Harvest:%.2f",total);
-		System.out.println();
-		System.out.printf("Average Yield:%.2f",avg);
-		System.out.println();
-		System.out.printf("Highest Yield:%.2f",max);
-		System.out.println();
-		System.out.println("Underperforming Plots: "+count);
-		System.out.printf("Performance Threshold:%.2f",threshold);
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				int temp = a[i][j];
+				a[i][j]=a[i][n-1-j];
+				a[i][n-1-j]=temp;
+				
+			}
+			
+		}
+		System.out.println("Rotated Matrix (90 deg clockwise):");		
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				System.out.print(a[i][j]+" ");
+			}
+			System.out.println();
+		}		
+		
+		
+		
+		
+		
+		
+		
+				
 	}
 
 }
