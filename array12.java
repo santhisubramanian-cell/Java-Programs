@@ -1,48 +1,59 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array12 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
 		
-		double[] a = new double[n];
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextDouble();
-		}
-		double limit = scan.nextDouble();
 		
-		double sum=0;
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
-		}
-		double avg = sum/(double)n;
-		double peak=0;
-		int index=-1;
-		for(int i=0;i<n;i++) {
-			if(a[i]>peak) {
-				peak=a[i];
-				index=i+1;
+		int[][] a = new int[4][7];
+		
+		for(int i=0;i<4;i++) {
+			for(int j=0;j<7;j++) {
+				a[i][j]=scan.nextInt();
 			}
 		}
-		System.out.println("Hours Monitored:"+n);
-		System.out.printf("Total Daily Consumption:%.2f",sum,"kwh");
-		System.out.println();
-		System.out.print("Peak Hour: Hour "+ index + " ");
-		System.out.printf("(%.2f)kwh",peak);
-		System.out.println();
-		System.out.printf("Average Hourly:%.2f",avg);
-		System.out.println();
-		System.out.printf("Daily Limit:%.2f",limit,"kwh");
-		System.out.println();
-		if(sum>limit) {
-			System.out.printf("Status:Exceeded by %.2f",sum-limit,"kwh");
+		System.out.println("Rainfall Data:");
+		for(int i=0;i<4;i++) {
+			
+			for(int j=0;j<7;j++) {
+				int sum=0;
+				if(a[i][j]==0) {
+					System.out.print(a[i][j]+"0"+" ");
+				}
+				else {
+					System.out.print(a[i][j]*10+" ");
+				}
+				
+			}
+			System.out.println();
 		}
-		else {
-			System.out.println("Status:Within Limit");
+		for(int i=0;i<4;i++) {
+			int sum=0;
+			for(int j=0;j<7;j++) {
+				sum+=a[i][j]*10;
+				
+			}
+			System.out.println("Week"+(i+1)+":"+sum+"mm");
 		}
+		int sum=0;
+		for(int i=0;i<4;i++) {
+			
+			for(int j=0;j<7;j++) {
+				sum+=a[i][j]*10;
+				
+			}
+		}
+		System.out.println("Monthly total:"+sum+"mm");
 		
+		
+		
+		
+		
+		
+		
+
 	}
 
 }
