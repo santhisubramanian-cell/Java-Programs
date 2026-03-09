@@ -1,85 +1,42 @@
-package one_d_array;
+package two_d_array;
 import java.util.Scanner;
 public class array15 {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		int n = scan.nextInt();
-		int[] a = new int[n];
+		int row = scan.nextInt();
+		int col = scan.nextInt();
+		int[][] a = new int[row][col];
 		
-		for(int i=0;i<n;i++) {
-			a[i]=scan.nextInt();
-		}
-		int sum=0;
-		for(int i=0;i<n;i++) {
-			sum+=a[i];
-		}
-		double avg = (double)sum/(double)n;
-		
-		int max = a[0];
-		
-		for(int i=0;i<n;i++) {
-			if(a[i]>max) {
-				max=a[i];
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				a[i][j]=scan.nextInt();
+				
 			}
 		}
-		int min = max;
-		for(int i=0;i<n;i++) {
-			if(a[i]<min) {
-				min=a[i];
+		
+		System.out.println("Employee Contact Book:");
+		for(int i=0;i<row;i++) {
+			System.out.print("dept"+(i+1)+": ");
+			for(int j=0;j<col;j++) {
+				System.out.print(a[i][j]+" ");
 			}
+			System.out.println();
 		}
 		int count=0;
-		for(int i=0;i<n;i++) {
-			if(a[i]>300) {
-				count++;
+		for(int i=0;i<row;i++) {
+			for(int j=0;j<col;j++) {
+				if(a[i][j]==0) {
+					break;
+				}
+				else {
+					count++;
+				}
 			}
 		}
-		double com = (double)(n-count)/n*100.0;
-		System.out.println("Total Calls:"+n);
-		System.out.printf("Average Handling Time:%.2f",avg);
-		System.out.println();
-		System.out.println("Shortest Call:"+min);
-		System.out.println("Longest Call:"+max);
-		System.out.println("Calls Exceeding Target (300s):"+count);
-		System.out.printf("Target Compliance:%.2f%%",com);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		System.out.println("Total Employees:"+count);
+
 	}
 
 }
