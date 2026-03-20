@@ -8,7 +8,7 @@ public class Basic12 {
 		int snack = scan.nextInt();
 		int mainten = scan.nextInt();
 		int electri = scan.nextInt();
-		int a = ticketRevenue+snack-mainten-electri;
+		int a = ticketRevenue+snack-mainten-electric;
 		System.out.println(a);
 		
 
