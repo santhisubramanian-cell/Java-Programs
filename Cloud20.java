@@ -7,7 +7,7 @@ public class Cloud20 {
 		
 		int storageGB = scan.nextInt();
         int userCount = scan.nextInt();
-        scan.nextLine(); // consume newline
+        scan.nextLine(); 
         String backupFrequency = scan.nextLine();
         String supportTier = scan.nextLine();
         double baseStorageCost = 0.0;
