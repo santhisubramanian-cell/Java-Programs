@@ -18,7 +18,7 @@ public class Shipping18 {
         } else if (shippingspeed.equals("Standard")) {
             baseRate = 10.0;
             serviceLevel = "Standard";
-        } else if (shippingspeed.equals("Express")) {
+        } else if (shippingspeed.equals("Express")){
             baseRate = 25.0;
             serviceLevel = "Priority";
         } else { 
