@@ -2,7 +2,7 @@ package ifelse;
 import java.util.Scanner;
 public class Shipping18 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
 		double packageweight = scan.nextDouble();
 		scan.nextLine();
